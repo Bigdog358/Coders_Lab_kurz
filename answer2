@@ -1,0 +1,17 @@
+def find_longest_word(text):
+    if not isinstance(text, str):
+        raise Exception("Invalid Data!")
+
+    words = [''.join(char for char in word if char.isalpha()) for word in text.split()]
+
+    longest = max(len(word) for word in words) if words else 0
+
+    return longest
+
+
+text = input("Write your text: ")
+try:
+    length = find_longest_word(text)
+    print(f"The length of the longest word is: {length}")
+except Exception as e:
+    print(e)
