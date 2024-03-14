@@ -1,0 +1,12 @@
+def get_initials(names):
+    initials = []
+    for name in names:
+        parts = name.split()
+        if len(parts) >= 2:
+            initial = ''.join(part[0].upper() for part in parts)
+            initials.append(initial)
+    return initials
+
+names = ["Harry Hole", "Alex Smith", "Bob Johnson", "Eric Novel"]
+initials = get_initials(names)
+print(initials)
