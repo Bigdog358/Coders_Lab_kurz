@@ -1,0 +1,67 @@
+query_1 = """
+CREAT TABLE Bands (
+id SERIAL PRIMARY KEY,
+name VARCHAR(60) UNIQUE,
+is_active BOOLEAN NOT NULL DEFAULT true
+);
+"""
+
+query_2 = """
+CREAT TABLE Musicians (
+is SERIAL PRIMARY KEY,
+name VARCHAR(60),
+surname VARCHAR(60),
+instrument VARCHAR(60),
+city VARCHAR(40)
+);
+"""
+
+query_3 = """
+CREATE TABLE Albums (
+id SERIAL PRIMARY KEY,
+name VARCHAR(60),
+band_id INT,
+price DECIMAL(5, 2),
+FOREIGN KEY (band_id) REFERENCES Bands (id)
+); 
+"""
+
+query_4 = """
+CREATE TABLE Band_Musicians (
+band_id INT,
+musician_id INT,
+PRIMARY KEY (Band_id, musician_id),
+FOREIGN KEY (Band_id) REFERENCES Bands (id),
+FOREIGN KEY (musician_id) REFERENCES Musicians(id)
+);
+"""
+
+query_5 = """
+SELECT *
+FROM Albums
+WHERE price > 25;
+"""
+query_6 = """
+INSERT INTO Musicians (name, surname, instrument, city)
+VALUES ("Jimmy", "Hendrix", "guitar", "Seattle");
+"""
+
+query_7 = """
+DELETE FROM Albums 
+WHERE id = 12;
+"""
+
+query_8 = """
+SELECT DISTINCT Musicians.*
+FROM Musicians
+JOIN Band_Musicians ON Musicians.id = Band_Musicians.musician_id;
+"""
+
+query_9 = """
+UPDATE Bands SET is_active = false 
+WHERE id = 1;
+"""
+
+query_10 = """
+ALTER TABLE Albums ADD COLUMN date_of_release DATE;
+"""
